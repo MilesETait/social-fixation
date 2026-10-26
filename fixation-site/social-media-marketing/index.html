@@ -96,7 +96,7 @@ details[open] .fx-plus{transform:rotate(45deg)}
 @media (prefers-reduced-motion:no-preference){
   @supports (animation-timeline:view()){
     .px{animation:fx-px linear both;animation-timeline:view();animation-range:cover 0% cover 100%;will-change:transform}
-    @keyframes fx-px{from{transform:translateY(-7%) scale(1.16)}to{transform:translateY(7%) scale(1.16)}}
+    @keyframes fx-px{from{transform:translateY(-14%) scale(1.32)}to{transform:translateY(14%) scale(1.32)}}
   }
 }
 /* FAQ rows on ink, same build as the services rows */
@@ -349,7 +349,7 @@ html,body{margin:0}
           if (r.bottom < -200 || r.top > vh + 200) return;
           var p = (vh - r.top) / (vh + r.height);
           p = Math.max(0, Math.min(1, p));
-          img.style.transform = 'translateY(' + (-7 + 14 * p).toFixed(2) + '%) scale(1.16)';
+          img.style.transform = 'translateY(' + (-14 + 28 * p).toFixed(2) + '%) scale(1.32)';
         });
       };
       var onScroll = function () { if (!ticking) { ticking = true; win.requestAnimationFrame(paint); } };
