@@ -18,17 +18,17 @@ a{color:inherit}a:hover{opacity:.72}
 .t-sub{font-size:24px;line-height:1.3;letter-spacing:-0.012em;font-weight:400;margin:0}
 .t-body{font-size:18px;line-height:1.6;font-weight:400;margin:0}
 .t-small{font-size:14px;line-height:1.45;letter-spacing:0.01em;font-weight:400;margin:0;font-variant-numeric:tabular-nums}
-.hl{display:inline-block;white-space:nowrap;padding:0.07em 0.16em 0.12em;margin:0 -0.04em;line-height:0.9;clip-path:polygon(0.18em 0,100% 0,calc(100% - 0.18em) 100%,0 100%)}
+.hl{--hl-sk:0.18em;display:inline-block;white-space:nowrap;padding:0.07em 0.16em 0.12em;margin:0 -0.04em;line-height:0.9;clip-path:polygon(var(--hl-sk) 0,100% 0,calc(100% - var(--hl-sk)) 100%,0 100%)}
 .wrap{max-width:1440px;margin:0 auto;box-sizing:border-box;padding:160px clamp(20px,5.5vw,80px)}
 .row{display:flex;flex-wrap:wrap;gap:24px}
 .c1{flex:0 0 calc(33.333% - 16px)}
 .c2{flex:0 0 calc(66.666% - 8px)}
 .lbl{display:flex;align-items:center;gap:10px;align-self:flex-start;padding-top:10px;color:#5C5B56}
 .card{padding:40px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px}
-.slant{clip-path:polygon(7px 0,100% 0,calc(100% - 7px) 100%,0 100%)}
-.btn{display:inline-flex;align-items:center;gap:12px;height:56px;padding:0 30px;text-decoration:none;clip-path:polygon(9px 0,100% 0,calc(100% - 9px) 100%,0 100%)}
+.slant{clip-path:polygon(7.24px 0,100% 0,calc(100% - 7.24px) 100%,0 100%)}
+.btn{display:inline-flex;align-items:center;gap:12px;height:56px;padding:0 30px;text-decoration:none;clip-path:polygon(var(--sk) 0,100% 0,calc(100% - var(--sk)) 100%,0 100%);--sk:9.21px}
 .svc{display:grid;grid-template-columns:calc(33.333% - 16px) 1fr 24px;gap:24px;align-items:baseline;background:#FFFFFF;padding:36px 40px;text-decoration:none;color:inherit}
-.dot{width:10px;height:8px;flex:0 0 auto;clip-path:polygon(1.5px 0,100% 0,calc(100% - 1.5px) 100%,0 100%)}
+.dot{width:10px;height:8px;flex:0 0 auto;clip-path:polygon(1.32px 0,100% 0,calc(100% - 1.32px) 100%,0 100%)}
 summary{list-style:none;cursor:pointer}summary::-webkit-details-marker{display:none}
 details[open] .fx-plus{transform:rotate(45deg)}
 @media (max-width:760px){.t-sub{font-size:21px}.t-body{font-size:17px}.c1,.c2{flex-basis:100% !important}.svc{grid-template-columns:1fr 24px}.svc p{grid-column:1/-1}}
@@ -48,13 +48,15 @@ details[open] .fx-plus{transform:rotate(45deg)}
 /* Service rows: a fast Sky swoosh in the highlight's slanted shape fills the bar on hover */
 .acc summary{position:relative;overflow:hidden;isolation:isolate}
 .acc summary>*{position:relative;z-index:1}
-.acc summary>.sw{position:absolute;z-index:0;top:0;bottom:0;left:-48px;right:-48px;clip-path:polygon(48px 0,100% 0,calc(100% - 48px) 100%,0 100%);transform:translateX(-102%);transition:transform .6s cubic-bezier(.7,0,.25,1);pointer-events:none}
-.acc summary:hover>.sw{transform:translateX(0)}
+.acc summary>.sw{position:absolute;z-index:0;top:0;bottom:0;left:-40px;right:-40px;transform:translateX(-104%) skewX(-9.34deg);transition:transform .6s cubic-bezier(.7,0,.25,1);pointer-events:none}
+.acc summary:hover>.sw{transform:translateX(0) skewX(-9.34deg)}
 .acc summary,.acc summary p{transition:color .35s ease .12s}
 .acc summary:hover p{color:#121211 !important}
 .acc[open] .fx-plus{transform:rotate(45deg)}
 .acc .btn{gap:10px}
 .svc-btn:hover{opacity:1}
+.svc-btn{--sk:7.24px}
+.site-nav .btn{--sk:7.90px}
 /* slanted buttons: overlap the slant so the visible gap is ~6px */
 .svc-row>.btn{margin-right:-3px}
 .svc-btn{transition:background-color .35s cubic-bezier(.65,0,.35,1),color .35s cubic-bezier(.65,0,.35,1)}
@@ -70,7 +72,7 @@ details[open] .fx-plus{transform:rotate(45deg)}
 .wi-r{position:absolute;opacity:0;pointer-events:none}
 .wi-p{display:none;flex-direction:column;gap:24px;width:100%}
 #wi1:checked ~ .wi .p1,#wi2:checked ~ .wi .p2,#wi3:checked ~ .wi .p3{display:flex}
-.wi-tab{display:flex;align-items:center;gap:14px;height:52px;padding:0 20px;cursor:pointer;color:#5C5B56;clip-path:polygon(7px 0,100% 0,calc(100% - 7px) 100%,0 100%);transition:background .2s,color .2s}
+.wi-tab{display:flex;align-items:center;gap:14px;height:52px;padding:0 20px;cursor:pointer;color:#5C5B56;clip-path:polygon(8.55px 0,100% 0,calc(100% - 8.55px) 100%,0 100%);transition:background .2s,color .2s}
 .wi-tab .dot{opacity:0}
 .wi-tab:hover{color:#121211}
 #wi1:checked ~ .wi .t1,#wi2:checked ~ .wi .t2,#wi3:checked ~ .wi .t3{background:#FFFFFF;color:#121211}
@@ -97,9 +99,9 @@ details[open] .fx-plus{transform:rotate(45deg)}
 
 /* motion: highlight paint, image parallax (scroll-driven where supported) */
 .hl.hl-fx{position:relative;z-index:0;background:none !important;transition:color .3s ease .3s}
-.hl.hl-fx::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--hl-bg);clip-path:polygon(0 0,0 0,-0.2em 100%,-0.2em 100%);transition:clip-path .75s cubic-bezier(.65,0,.25,1)}
+.hl.hl-fx::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--hl-bg);clip-path:polygon(0 0,0 0,calc(var(--hl-sk) * -1) 100%,calc(var(--hl-sk) * -1) 100%);transition:clip-path .75s cubic-bezier(.65,0,.25,1)}
 
-.hl.hl-fx.in::before{clip-path:polygon(0 0,calc(100% + 0.2em) 0,100% 100%,-0.2em 100%)}
+.hl.hl-fx.in::before{clip-path:polygon(0 0,calc(100% + var(--hl-sk)) 0,100% 100%,calc(var(--hl-sk) * -1) 100%)}
 @media (prefers-reduced-motion:no-preference){
   @supports (animation-timeline:view()){
     .px{animation:fx-px linear both;animation-timeline:view();animation-range:cover 0% cover 100%;will-change:transform}
@@ -113,11 +115,11 @@ details[open] .fx-plus{transform:rotate(45deg)}
 .hl.hl-fx::before{background:var(--hl-bg,var(--tone))}
 .hl.hl-fx:not(.in){color:var(--hl-c0) !important}
 /* primary buttons: one size, brand-angle sweep on hover */
-.btn-p{height:64px !important;padding:0 36px !important;font-weight:500}
+.btn-p{height:64px !important;padding:0 36px !important;font-weight:500;--sk:10.53px}
 .sweep{position:relative;isolation:isolate;transition:color .18s ease .06s}
-.sweep::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--bh);clip-path:polygon(0 0,0 0,-14px 100%,-14px 100%);transition:clip-path .32s cubic-bezier(.65,0,.35,1)}
+.sweep::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--bh);clip-path:polygon(0 0,0 0,calc(var(--sk) * -1) 100%,calc(var(--sk) * -1) 100%);transition:clip-path .32s cubic-bezier(.65,0,.35,1)}
 .sweep:hover{opacity:1;color:var(--bhc) !important}
-.sweep:hover::before{clip-path:polygon(0 0,calc(100% + 14px) 0,100% 100%,-14px 100%)}
+.sweep:hover::before{clip-path:polygon(0 0,calc(100% + var(--sk)) 0,100% 100%,calc(var(--sk) * -1) 100%)}
 /* case study cards go accent on hover */
 .cs-card{transition:background-color .4s cubic-bezier(.65,0,.35,1)}
 .cs-card:hover{background-color:var(--tone) !important;opacity:1}
@@ -132,7 +134,7 @@ footer a:hover{color:var(--tone) !important;opacity:1}
 .fx-flavour{all:unset;box-sizing:border-box;display:flex;align-items:center;gap:12px;width:100%;height:44px;padding:0 12px;cursor:pointer;color:#F6F5F1}
 .fx-flavour:hover,.fx-flavour[aria-pressed="true"]{background:#33332F}
 .fx-flavour:focus-visible{outline:2px solid var(--tone);outline-offset:-2px}
-.fx-flavour .chip{width:18px;height:14px;flex:0 0 auto;clip-path:polygon(3px 0,100% 0,calc(100% - 3px) 100%,0 100%)}
+.fx-flavour .chip{width:18px;height:14px;flex:0 0 auto;clip-path:polygon(2.30px 0,100% 0,calc(100% - 2.30px) 100%,0 100%)}
 .fx-flavour[aria-pressed="true"]::after{content:"";margin-left:auto;width:6px;height:6px;background:#F6F5F1;clip-path:polygon(1px 0,100% 0,calc(100% - 1px) 100%,0 100%)}
 
 /* Jobs: card treatments for review (click the section to cycle) */
@@ -152,7 +154,7 @@ footer a:hover{color:var(--tone) !important;opacity:1}
 .m-menu{display:none}
 .m-menu summary{list-style:none}
 .m-menu summary::-webkit-details-marker{display:none}
-.m-menu-btn{position:relative;z-index:71;display:inline-flex;align-items:center;justify-content:center;width:44px;height:40px;background:#262624;color:#F6F5F1;cursor:pointer;clip-path:polygon(6px 0,100% 0,calc(100% - 6px) 100%,0 100%)}
+.m-menu-btn{position:relative;z-index:71;display:inline-flex;align-items:center;justify-content:center;width:44px;height:40px;background:#262624;color:#F6F5F1;cursor:pointer;clip-path:polygon(6.58px 0,100% 0,calc(100% - 6.58px) 100%,0 100%)}
 .m-menu-btn svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8}
 .m-menu .i-close,.m-menu[open] .i-open{display:none}
 .m-menu[open] .i-close{display:block}
@@ -168,7 +170,7 @@ footer a:hover{color:var(--tone) !important;opacity:1}
   .site-header>a:first-child svg{width:100px !important}
   .site-nav{margin-left:auto;gap:10px !important;flex-wrap:nowrap !important}
   .site-nav>a:not(.btn),.site-nav>details{display:none !important}
-  .site-nav .btn{height:40px !important;padding:0 16px !important;font-size:15px !important;gap:8px}
+  .site-nav .btn{height:40px !important;padding:0 16px !important;font-size:15px !important;gap:8px;--sk:6.58px}
   .site-nav .btn svg{width:15px !important;height:15px !important}
   .m-menu{display:block}
   .fx-switch>div{width:calc(100vw - 40px) !important}
@@ -181,11 +183,11 @@ footer a:hover{color:var(--tone) !important;opacity:1}
   .jobs-h{width:auto !important}
   .jobs-grid{grid-template-columns:minmax(0,1fr) !important;gap:88px !important}
   .jobs-col{gap:88px !important;padding-top:0 !important}
-  .job-tag{left:-20px !important;top:-22px !important;height:48px !important;padding:0 16px !important}
+  .job-tag{left:-20px !important;top:-22px !important;height:48px !important;padding:0 16px !important;clip-path:polygon(7.90px 0,100% 0,calc(100% - 7.90px) 100%,0 100%) !important}
   .job-img{width:90% !important}
   .job-card{margin:-64px 0 0 8% !important;padding:24px !important}
   #jobs[data-v="4"] .job-card{margin:24px 0 0 8% !important;padding:0 !important}
-  .cycle-chip{top:24px !important;height:36px !important;font-size:12px !important}
+  .cycle-chip{top:24px !important;height:36px !important;font-size:12px !important;clip-path:polygon(5.92px 0,100% 0,calc(100% - 5.92px) 100%,0 100%) !important}
   .cycle-hint{display:none}
   .acc summary.g12{grid-template-columns:minmax(0,1fr) 24px !important;padding:22px 20px !important;row-gap:6px !important}
   .acc summary.g12>h3{grid-column:1 !important;grid-row:1}
@@ -253,7 +255,7 @@ html,body{margin:0}
     <details class="fx-switch" style="position: relative; align-self: flex-start; z-index: 5">
       <summary aria-label="Switch service" style="display: inline-flex; align-items: center; gap: 14px">
         
-        <span class="t-body" style="display: inline-flex; align-items: center; gap: 12px; height: 48px; padding: 0 22px 0 24px; background: #1C1C1A; clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%)">
+        <span class="t-body" style="display: inline-flex; align-items: center; gap: 12px; height: 48px; padding: 0 22px 0 24px; background: #1C1C1A; clip-path: polygon(7.90px 0, 100% 0, calc(100% - 7.90px) 100%, 0 100%)">
           <span class="dot" style="background: var(--tone)" aria-hidden="true"></span>Social Media Marketing
           <svg class="fx-chev" viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; transition: transform .2s" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
         </span>
@@ -273,7 +275,7 @@ html,body{margin:0}
         <a href="#" class="t-body" style="display: flex; align-items: center; justify-content: space-between; height: 52px; margin-top: 8px; padding: 0 16px; background: #F6F5F1; color: #121211; text-decoration: none">All services <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
       </div>
     </details>
-    <h1 class="t-xl" style="max-width: 1200px; line-height: 0.86; text-transform: uppercase; letter-spacing: -0.03em">Social Media <span class="hl" style="background: var(--tone); line-height: 0.76; padding: 0.148em 0.16em 0.005em; margin: -0.1em -0.04em 0 -0.16em">Marketing</span></h1>
+    <h1 class="t-xl" style="max-width: 1200px; line-height: 0.86; text-transform: uppercase; letter-spacing: -0.03em">Social Media <span class="hl" style="--hl-sk: 0.15em; background: var(--tone); line-height: 0.76; padding: 0.148em 0.16em 0.005em; margin: -0.1em -0.04em 0 -0.16em">Marketing</span></h1>
   </div>
   <div class="row hero-row" style="gap: 40px 24px; align-items: flex-end">
     <div class="c1"><a href="#cta" class="btn btn-p sweep t-body" style="--bh: #F6F5F1; --bhc: #121211; background: var(--tone); color: rgb(18, 18, 17)">Let's talk <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></div>
@@ -304,15 +306,15 @@ html,body{margin:0}
     </div>
   </div>
 </section><section id="jobs" data-cycle="Current|White cards|Dark cards|No overlap|Accent cards" data-v="1" style="position: relative; background-color: #f6f5f1; cursor: pointer">
-  <button type="button" class="cycle-chip t-small" aria-label="Cycle the card style for review" style="position: absolute; top: 48px; right: clamp(20px, 5.5vw, 80px); z-index: 3; display: inline-flex; align-items: center; gap: 10px; height: 40px; padding: 0 18px; border: 0; font: inherit; font-size: 14px; background: #121211; color: #F6F5F1; cursor: pointer; clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%)"><span class="dot" style="background: var(--tone)" aria-hidden="true"></span>Card style <span class="cycle-count" style="color: #B3B2AB">1 / 5</span><span class="cycle-name">Current</span><span class="cycle-hint" style="color: #B3B2AB">· click to change</span></button>
+  <button type="button" class="cycle-chip t-small" aria-label="Cycle the card style for review" style="position: absolute; top: 48px; right: clamp(20px, 5.5vw, 80px); z-index: 3; display: inline-flex; align-items: center; gap: 10px; height: 40px; padding: 0 18px; border: 0; font: inherit; font-size: 14px; background: #121211; color: #F6F5F1; cursor: pointer; clip-path: polygon(6.58px 0, 100% 0, calc(100% - 6.58px) 100%, 0 100%)"><span class="dot" style="background: var(--tone)" aria-hidden="true"></span>Card style <span class="cycle-count" style="color: #B3B2AB">1 / 5</span><span class="cycle-name">Current</span><span class="cycle-hint" style="color: #B3B2AB">· click to change</span></button>
   <div class="wrap">
     <div class="row" style="margin-bottom: 104px; flex-direction: column">
       <p class="t-small c1 lbl"><svg viewBox="0 0 500 390.35" style="width: 16px; height: auto; color: #121211" aria-hidden="true"><path fill="currentColor" d="M0,390.35l29.68-180.43h343.79l-29.68,180.43H0Z"></path><path fill="currentColor" d="M126.53,180.43L156.21,0h343.79l-29.68,180.43H126.53Z"></path></svg>02 · What it can do</p>
       <h2 class="t-display c2 jobs-h" style="max-width: 900px; width: 783px">Different jobs need different social.</h2>
     </div>
     <div class="jobs-grid" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 64px; align-items: start">
-      <div class="jobs-col" style="display: flex; flex-direction: column; gap: 140px"><article style="position: relative; display: flex; flex-direction: column"><span class="t-heading job-tag" style="position: absolute; top: -32px; left: -30px; z-index: 2; display: inline-flex; align-items: center; height: 64px; padding: 0 22px; background: #121211; color: #FFFFFF; clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%)">01</span><div class="job-img" style="overflow: clip; position: relative; aspect-ratio: 4 / 5; background: #EAE8E1; width: 78%"><img class="px" src="assets/ss4.jpg" alt="From Melbourne, With Love campaign artwork over a sandwich deli" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block"></div><div class="job-card" style="position: relative; margin: -176px 0 0 22%; padding: 40px; display: flex; flex-direction: column; gap: 20px; background-color: #f6f5f1"><h3 class="t-heading">Build <span class="hl" style="background: var(--tone)">recognition</span></h3><p class="t-sub" style="color: #2C2C29">Social can make a brand easier to notice, recognise and remember over time.</p><p class="t-body" style="color: #2C2C29">That requires more than keeping an account active. The brand needs repeatable ideas, distinctive creative signals and enough consistency for individual pieces of content to reinforce something larger. The job is cumulative: each interaction gives people another chance to understand who the brand is and why it matters.</p></div></article><article style="position: relative; display: flex; flex-direction: column"><span class="t-heading job-tag" style="position: absolute; top: -32px; left: -30px; z-index: 2; display: inline-flex; align-items: center; height: 64px; padding: 0 22px; background: #121211; color: #FFFFFF; clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%)">03</span><div class="job-img" style="overflow: clip; position: relative; aspect-ratio: 4 / 5; background: #EAE8E1; width: 78%"><img class="px" src="assets/ev2.jpg" alt="Event activation with a concierge desk and crowds" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block"></div><div class="job-card" style="position: relative; margin: -176px 0 0 22%; padding: 40px; display: flex; flex-direction: column; gap: 20px; background-color: #f6f5f1"><h3 class="t-heading">Build <span class="hl" style="background: var(--tone)">participation</span></h3><p class="t-sub" style="color: #2C2C29">Some of social's value comes from giving people a way to respond rather than simply receive a message.</p><p class="t-body" style="color: #2C2C29">That can mean conversation, community activity, creator involvement, customer participation or content people actively want to share and contribute to. The appropriate level depends on the brand, but participation can make the audience part of how an idea travels instead of leaving every piece of reach to the brand itself.</p></div></article></div>
-      <div class="jobs-col" style="display: flex; flex-direction: column; gap: 140px; padding-top: 240px"><article style="position: relative; display: flex; flex-direction: column"><span class="t-heading job-tag" style="position: absolute; top: -32px; left: -30px; z-index: 2; display: inline-flex; align-items: center; height: 64px; padding: 0 22px; background: #121211; color: #FFFFFF; clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%)">02</span><div class="job-img" style="overflow: clip; position: relative; aspect-ratio: 4 / 5; background: #EAE8E1; width: 78%"><img class="px" src="assets/bp2.jpg" alt="Bless Payments ad: an onion labelled Western Onion, their hidden fees will make you cry" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block"></div><div class="job-card" style="position: relative; margin: -176px 0 0 22%; padding: 40px; display: flex; flex-direction: column; gap: 20px; background-color: #f6f5f1"><h3 class="t-heading">Create <span class="hl" style="background: var(--tone)">demand</span></h3><p class="t-sub" style="color: #2C2C29">Social can give people new reasons to consider a brand, product or proposition.</p><p class="t-body" style="color: #2C2C29">A launch might need explanation. An established product might need a fresh reason to enter consideration. A brand may need to demonstrate usefulness, make an unfamiliar benefit easier to understand or stay visible until the buying moment arrives. The creative and distribution should reflect the specific change required rather than treating every objective as an awareness problem.</p></div></article><article style="position: relative; display: flex; flex-direction: column"><span class="t-heading job-tag" style="position: absolute; top: -32px; left: -30px; z-index: 2; display: inline-flex; align-items: center; height: 64px; padding: 0 22px; background: #121211; color: #FFFFFF; clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%)">04</span><div class="job-img" style="overflow: clip; position: relative; aspect-ratio: 4 / 5; background: #EAE8E1; width: 78%"><img class="px" src="assets/bp4.jpg" alt="Bless Payments ad: Tap. Send. Done." style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block"></div><div class="job-card" style="position: relative; margin: -176px 0 0 22%; padding: 40px; display: flex; flex-direction: column; gap: 20px; background-color: #f6f5f1"><h3 class="t-heading">Turn attention into <span class="hl" style="background: var(--tone)">action</span></h3><p class="t-sub" style="color: #2C2C29">Attention only matters commercially when it can contribute to the next useful step.</p><p class="t-body" style="color: #2C2C29">Depending on the business, that might mean a site visit, product trial, enquiry, store visit, purchase or another defined action. Paid distribution can put more weight behind the right activity, while stronger creative gives people a clearer reason to act. Not every social programme needs to drive an immediate conversion. But when action is the job, the system should be designed accordingly.</p></div></article></div>
+      <div class="jobs-col" style="display: flex; flex-direction: column; gap: 140px"><article style="position: relative; display: flex; flex-direction: column"><span class="t-heading job-tag" style="position: absolute; top: -32px; left: -30px; z-index: 2; display: inline-flex; align-items: center; height: 64px; padding: 0 22px; background: #121211; color: #FFFFFF; clip-path: polygon(10.53px 0, 100% 0, calc(100% - 10.53px) 100%, 0 100%)">01</span><div class="job-img" style="overflow: clip; position: relative; aspect-ratio: 4 / 5; background: #EAE8E1; width: 78%"><img class="px" src="assets/ss4.jpg" alt="From Melbourne, With Love campaign artwork over a sandwich deli" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block"></div><div class="job-card" style="position: relative; margin: -176px 0 0 22%; padding: 40px; display: flex; flex-direction: column; gap: 20px; background-color: #f6f5f1"><h3 class="t-heading">Build <span class="hl" style="background: var(--tone)">recognition</span></h3><p class="t-sub" style="color: #2C2C29">Social can make a brand easier to notice, recognise and remember over time.</p><p class="t-body" style="color: #2C2C29">That requires more than keeping an account active. The brand needs repeatable ideas, distinctive creative signals and enough consistency for individual pieces of content to reinforce something larger. The job is cumulative: each interaction gives people another chance to understand who the brand is and why it matters.</p></div></article><article style="position: relative; display: flex; flex-direction: column"><span class="t-heading job-tag" style="position: absolute; top: -32px; left: -30px; z-index: 2; display: inline-flex; align-items: center; height: 64px; padding: 0 22px; background: #121211; color: #FFFFFF; clip-path: polygon(10.53px 0, 100% 0, calc(100% - 10.53px) 100%, 0 100%)">03</span><div class="job-img" style="overflow: clip; position: relative; aspect-ratio: 4 / 5; background: #EAE8E1; width: 78%"><img class="px" src="assets/ev2.jpg" alt="Event activation with a concierge desk and crowds" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block"></div><div class="job-card" style="position: relative; margin: -176px 0 0 22%; padding: 40px; display: flex; flex-direction: column; gap: 20px; background-color: #f6f5f1"><h3 class="t-heading">Build <span class="hl" style="background: var(--tone)">participation</span></h3><p class="t-sub" style="color: #2C2C29">Some of social's value comes from giving people a way to respond rather than simply receive a message.</p><p class="t-body" style="color: #2C2C29">That can mean conversation, community activity, creator involvement, customer participation or content people actively want to share and contribute to. The appropriate level depends on the brand, but participation can make the audience part of how an idea travels instead of leaving every piece of reach to the brand itself.</p></div></article></div>
+      <div class="jobs-col" style="display: flex; flex-direction: column; gap: 140px; padding-top: 240px"><article style="position: relative; display: flex; flex-direction: column"><span class="t-heading job-tag" style="position: absolute; top: -32px; left: -30px; z-index: 2; display: inline-flex; align-items: center; height: 64px; padding: 0 22px; background: #121211; color: #FFFFFF; clip-path: polygon(10.53px 0, 100% 0, calc(100% - 10.53px) 100%, 0 100%)">02</span><div class="job-img" style="overflow: clip; position: relative; aspect-ratio: 4 / 5; background: #EAE8E1; width: 78%"><img class="px" src="assets/bp2.jpg" alt="Bless Payments ad: an onion labelled Western Onion, their hidden fees will make you cry" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block"></div><div class="job-card" style="position: relative; margin: -176px 0 0 22%; padding: 40px; display: flex; flex-direction: column; gap: 20px; background-color: #f6f5f1"><h3 class="t-heading">Create <span class="hl" style="background: var(--tone)">demand</span></h3><p class="t-sub" style="color: #2C2C29">Social can give people new reasons to consider a brand, product or proposition.</p><p class="t-body" style="color: #2C2C29">A launch might need explanation. An established product might need a fresh reason to enter consideration. A brand may need to demonstrate usefulness, make an unfamiliar benefit easier to understand or stay visible until the buying moment arrives. The creative and distribution should reflect the specific change required rather than treating every objective as an awareness problem.</p></div></article><article style="position: relative; display: flex; flex-direction: column"><span class="t-heading job-tag" style="position: absolute; top: -32px; left: -30px; z-index: 2; display: inline-flex; align-items: center; height: 64px; padding: 0 22px; background: #121211; color: #FFFFFF; clip-path: polygon(10.53px 0, 100% 0, calc(100% - 10.53px) 100%, 0 100%)">04</span><div class="job-img" style="overflow: clip; position: relative; aspect-ratio: 4 / 5; background: #EAE8E1; width: 78%"><img class="px" src="assets/bp4.jpg" alt="Bless Payments ad: Tap. Send. Done." style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block"></div><div class="job-card" style="position: relative; margin: -176px 0 0 22%; padding: 40px; display: flex; flex-direction: column; gap: 20px; background-color: #f6f5f1"><h3 class="t-heading">Turn attention into <span class="hl" style="background: var(--tone)">action</span></h3><p class="t-sub" style="color: #2C2C29">Attention only matters commercially when it can contribute to the next useful step.</p><p class="t-body" style="color: #2C2C29">Depending on the business, that might mean a site visit, product trial, enquiry, store visit, purchase or another defined action. Paid distribution can put more weight behind the right activity, while stronger creative gives people a clearer reason to act. Not every social programme needs to drive an immediate conversion. But when action is the job, the system should be designed accordingly.</p></div></article></div>
     </div>
   </div>
 </section>
@@ -382,7 +384,7 @@ html,body{margin:0}
 
 <!-- TONE · 9 final CTA (V2): Sky + photo, seam on the brand angle -->
 <section id="cta" style="position: relative; overflow: clip; background: var(--tone); color: #121211">
-  <div aria-hidden="true" class="cta-photo-wrap" style="overflow: clip; position: absolute; top: 0; bottom: 0; right: 0; width: 46%; clip-path: polygon(calc(0px + 164px) 0, 100% 0, 100% 100%, 0 100%)"><img class="px cta-photo" src="assets/ss3.jpg" alt="" style="object-position: 50% 30%">
+  <div aria-hidden="true" class="cta-photo-wrap" style="overflow: clip; position: absolute; top: 0; bottom: 0; right: 0; width: 46%; clip-path: polygon(165px 0, 100% 0, 100% 100%, 0 100%)"><img class="px cta-photo" src="assets/ss3.jpg" alt="" style="object-position: 50% 30%">
   </div>
   <div class="wrap cta-wrap" style="position: relative; min-height: 1000px; display: flex; flex-direction: column; justify-content: space-between; gap: 64px; padding-top: 120px; padding-bottom: 120px">
     <p class="t-small lbl" style="padding-top: 0; color: #121211"><svg viewBox="0 0 500 390.35" style="width: 16px; height: auto" aria-hidden="true"><path fill="currentColor" d="M0,390.35l29.68-180.43h343.79l-29.68,180.43H0Z"></path><path fill="currentColor" d="M126.53,180.43L156.21,0h343.79l-29.68,180.43H126.53Z"></path></svg>Start a project</p>
@@ -417,7 +419,7 @@ html,body{margin:0}
 </section>
 
 <!-- Flavours: floating accent switcher, bottom left -->
-<details class="fx-flav dk" style="position: fixed; left: 24px; bottom: 24px; z-index: 60"><summary class="t-small" aria-label="Flavours: choose the accent colour" style="display: inline-flex; align-items: center; gap: 10px; height: 44px; padding: 0 18px 0 20px; background: #262624; color: #F6F5F1; cursor: pointer; box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35); clip-path: polygon(7px 0, 100% 0, calc(100% - 7px) 100%, 0 100%)"><span class="dot" style="background: var(--tone)" aria-hidden="true"></span>Flavours<svg class="fx-chev" viewBox="0 0 24 24" style="width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.6; transition: transform .2s" aria-hidden="true"><path d="M6 15l6-6 6 6"></path></svg></summary><div style="position: absolute; bottom: calc(100% + 8px); left: 0; z-index: 30; width: 184px; background: #262624; box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4); padding: 8px; box-sizing: border-box"><p class="t-small" style="color: #B3B2AB; padding: 10px 12px 8px">Pick an accent</p><ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px"><li><button type="button" class="fx-flavour t-small" data-tone="#EF572B" aria-pressed="false"><span class="chip" style="background: #EF572B" aria-hidden="true"></span>Chilli</button></li><li><button type="button" class="fx-flavour t-small" data-tone="#FF9D27" aria-pressed="false"><span class="chip" style="background: #FF9D27" aria-hidden="true"></span>Mango</button></li><li><button type="button" class="fx-flavour t-small" data-tone="#F7BC14" aria-pressed="false"><span class="chip" style="background: #F7BC14" aria-hidden="true"></span>Lemon</button></li><li><button type="button" class="fx-flavour t-small" data-tone="#3FEEB0" aria-pressed="false"><span class="chip" style="background: #3FEEB0" aria-hidden="true"></span>Mint</button></li><li><button type="button" class="fx-flavour t-small" data-tone="#6796FF" aria-pressed="true"><span class="chip" style="background: #6796FF" aria-hidden="true"></span>Blueberry</button></li></ul></div></details>
+<details class="fx-flav dk" style="position: fixed; left: 24px; bottom: 24px; z-index: 60"><summary class="t-small" aria-label="Flavours: choose the accent colour" style="display: inline-flex; align-items: center; gap: 10px; height: 44px; padding: 0 18px 0 20px; background: #262624; color: #F6F5F1; cursor: pointer; box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35); clip-path: polygon(7.24px 0, 100% 0, calc(100% - 7.24px) 100%, 0 100%)"><span class="dot" style="background: var(--tone)" aria-hidden="true"></span>Flavours<svg class="fx-chev" viewBox="0 0 24 24" style="width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.6; transition: transform .2s" aria-hidden="true"><path d="M6 15l6-6 6 6"></path></svg></summary><div style="position: absolute; bottom: calc(100% + 8px); left: 0; z-index: 30; width: 184px; background: #262624; box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4); padding: 8px; box-sizing: border-box"><p class="t-small" style="color: #B3B2AB; padding: 10px 12px 8px">Pick an accent</p><ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 2px"><li><button type="button" class="fx-flavour t-small" data-tone="#EF572B" aria-pressed="false"><span class="chip" style="background: #EF572B" aria-hidden="true"></span>Chilli</button></li><li><button type="button" class="fx-flavour t-small" data-tone="#FF9D27" aria-pressed="false"><span class="chip" style="background: #FF9D27" aria-hidden="true"></span>Mango</button></li><li><button type="button" class="fx-flavour t-small" data-tone="#F7BC14" aria-pressed="false"><span class="chip" style="background: #F7BC14" aria-hidden="true"></span>Lemon</button></li><li><button type="button" class="fx-flavour t-small" data-tone="#3FEEB0" aria-pressed="false"><span class="chip" style="background: #3FEEB0" aria-hidden="true"></span>Mint</button></li><li><button type="button" class="fx-flavour t-small" data-tone="#6796FF" aria-pressed="true"><span class="chip" style="background: #6796FF" aria-hidden="true"></span>Blueberry</button></li></ul></div></details>
 
 <!-- INK (lifted, #1C1C1A) · footer: offices, sitemap, services, industries -->
 <footer style="background: #1C1C1A; color: #FFFFFF">
