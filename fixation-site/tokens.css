@@ -1,5 +1,6 @@
 /* tokens:start
    Fixation design tokens. CSS custom properties only.
+   Designed at 1440, scales to 1920 (XL, Display, Heading, measures, margin); fixed above 1920.
    Phone breakpoint: max-width 760px (media queries can't read custom properties, so it's written as a literal).
 */
 :root{
@@ -41,14 +42,14 @@
   --weight-regular:400;
   --weight-medium:500;
   --weight-bold:700;
-  --text-xl-size:clamp(64px, 9.4vw, 135px);
+  --text-xl-size:clamp(64px, 9.4vw, 180px);
   --text-xl-leading:0.86;
   --text-xl-tracking:-0.045em;
   --text-xl-caps-tracking:-0.03em;
-  --text-display-size:clamp(44px, 5.3vw, 76px);
+  --text-display-size:clamp(44px, 5.3vw, 102px);
   --text-display-leading:0.95;
   --text-display-tracking:-0.035em;
-  --text-heading-size:clamp(30px, 2.95vw, 42px);
+  --text-heading-size:clamp(30px, 2.95vw, 57px);
   --text-heading-leading:1.06;
   --text-heading-tracking:-0.025em;
   --text-sub-size:24px;
@@ -78,22 +79,22 @@
   --space-13:160px;
 
   /* Layout */
-  --layout-max:1440px;
-  --layout-margin:clamp(20px, 5.5vw, 80px);
+  --layout-max:1920px;
+  --layout-margin:clamp(20px, 5.5vw, 106px);
   --layout-gutter:var(--space-6);
   --layout-columns:12;
   --section-pad-lg:var(--space-13);
   --section-pad-md:var(--space-12);
 
-  /* Size */
+  /* Size. Measures scale with the viewport between 1440 and 1920, in step with XL, Display and Heading */
   --size-control-lg:64px;
   --size-control-md:48px;
   --size-control-sm:44px;
   --size-control-xs:40px;
-  --measure-sm:560px;
-  --measure-md:720px;
-  --measure-lg:900px;
-  --measure-xl:1200px;
+  --measure-sm:clamp(560px, 38.9vw, 747px);
+  --measure-md:clamp(720px, 50vw, 960px);
+  --measure-lg:clamp(900px, 62.5vw, 1200px);
+  --measure-xl:clamp(1200px, 83.4vw, 1600px);
 
   /* Shape: every slant sits on the logo angle. Offset = height x ratio */
   --slant-angle:9.34deg;
