@@ -185,13 +185,13 @@ footer a:hover{color:var(--color-accent) !important;opacity:1}
   #faqs h2{width:auto !important}
 }
 
-/* numbered cards as a slider: 3.5 in view on desktop, bleeding off the right edge (scroll-snap; Swiper in the build) */
+/* numbered cards as a slider: 2.5 in view on desktop, bleeding off the right edge (scroll-snap; Swiper in the build) */
 .sw-wrap{position:relative}
 .how-grid.sw-track{display:flex !important;gap:var(--space-6);overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:none;margin-right:calc(var(--layout-margin) * -1) !important;padding-right:var(--layout-margin) !important;cursor:grab;outline:none}
 .sw-track::-webkit-scrollbar{display:none}
 .sw-track:focus-visible{box-shadow:0 0 0 2px var(--color-accent)}
 .sw-track.drag{cursor:grabbing;scroll-snap-type:none;user-select:none}
-.sw-track>li{flex:0 0 calc((100% - 3 * var(--space-6)) / 3.5);scroll-snap-align:start;box-sizing:border-box}
+.sw-track>li{flex:0 0 calc((100% - 2 * var(--space-6)) / 2.5);scroll-snap-align:start;box-sizing:border-box}
 .sw-ctrl{display:flex;align-items:center;gap:var(--space-8);margin-top:var(--space-9)}
 .sw-bar{position:relative;flex:1 1 auto;height:2px;background:var(--color-grey-200);overflow:hidden}
 .sw-bar>span{position:absolute;left:0;top:0;bottom:0;width:30%;background:var(--color-ink);transition:transform var(--motion-fast) linear}
