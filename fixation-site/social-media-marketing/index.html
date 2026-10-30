@@ -185,6 +185,29 @@ footer a:hover{color:var(--color-accent) !important;opacity:1}
   #faqs h2{width:auto !important}
 }
 
+/* numbered cards as a slider: 3.5 in view on desktop, bleeding off the right edge (scroll-snap; Swiper in the build) */
+.sw-wrap{position:relative}
+.how-grid.sw-track{display:flex !important;gap:var(--space-6);overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:none;margin-right:calc(var(--layout-margin) * -1) !important;padding-right:var(--layout-margin) !important;cursor:grab;outline:none}
+.sw-track::-webkit-scrollbar{display:none}
+.sw-track:focus-visible{box-shadow:0 0 0 2px var(--color-accent)}
+.sw-track.drag{cursor:grabbing;scroll-snap-type:none;user-select:none}
+.sw-track>li{flex:0 0 calc((100% - 3 * var(--space-6)) / 3.5);scroll-snap-align:start;box-sizing:border-box}
+.sw-ctrl{display:flex;align-items:center;gap:var(--space-8);margin-top:var(--space-9)}
+.sw-bar{position:relative;flex:1 1 auto;height:2px;background:var(--color-grey-200);overflow:hidden}
+.sw-bar>span{position:absolute;left:0;top:0;bottom:0;width:30%;background:var(--color-ink);transition:transform var(--motion-fast) linear}
+.sw-btns{display:flex;flex:0 0 auto}
+.sw-btns>.sw-btn+.sw-btn{margin-left:calc(var(--space-2) - 3px)}
+.sw-btn{all:unset;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;width:64px;height:var(--size-control-md);background:var(--color-ink);color:var(--color-paper);cursor:pointer;clip-path:polygon(var(--slant-md) 0,100% 0,calc(100% - var(--slant-md)) 100%,0 100%);transition:background-color var(--motion-fast) ease,color var(--motion-fast) ease,opacity var(--motion-fast) ease}
+.sw-btn:hover{background:var(--color-accent);color:var(--color-ink)}
+.sw-btn:focus-visible{background:var(--color-accent);color:var(--color-ink)}
+.sw-btn:disabled{opacity:.2;cursor:default;background:var(--color-ink);color:var(--color-paper)}
+@media (max-width:760px){
+  .how-grid.sw-track{gap:var(--space-3) !important}
+  .sw-track>li{flex-basis:84% !important}
+  .sw-ctrl{margin-top:var(--space-7);gap:var(--space-6)}
+  .sw-btn{width:56px;height:var(--size-control-sm);clip-path:polygon(var(--slant-sm) 0,100% 0,calc(100% - var(--slant-sm)) 100%,0 100%)}
+}
+
 html,body{margin:0}
 </style>
 </head>
@@ -337,7 +360,10 @@ html,body{margin:0}
       <p class="t-small c1 lbl"><svg viewBox="0 0 500 390.35" style="width: 16px; height: auto; color: var(--color-ink)" aria-hidden="true"><path fill="currentColor" d="M0,390.35l29.68-180.43h343.79l-29.68,180.43H0Z"></path><path fill="currentColor" d="M126.53,180.43L156.21,0h343.79l-29.68,180.43H126.53Z"></path></svg>06 · How we work</p>
       <h2 class="t-display c2" style="max-width: var(--measure-lg)">Four habits we don't break.</h2>
     </div>
-    <ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-6); grid-auto-rows: 1fr" class="how-grid"><li class="card" style="background: var(--color-paper); padding: var(--space-8); gap: var(--space-6)"><span class="t-display" style="color: var(--color-ink); font-variant-numeric: tabular-nums">01</span><h3 class="t-sub" style="margin-top: var(--space-8); font-weight: var(--weight-bold); letter-spacing: var(--text-sub-strong-tracking)">Start with the <span class="hl" style="background: var(--color-accent)">business problem</span></h3><div style="display: flex; flex-direction: column; gap: var(--space-3); color: var(--color-grey-700)"><p class="t-body">We do not begin by deciding how many posts, videos or platforms a brand should have.</p><p class="t-body">We start with what needs to change and where social can make a useful contribution.</p></div></li><li class="card" style="background: var(--color-paper); padding: var(--space-8); gap: var(--space-6)"><span class="t-display" style="color: var(--color-ink); font-variant-numeric: tabular-nums">02</span><h3 class="t-sub" style="margin-top: var(--space-8); font-weight: var(--weight-bold); letter-spacing: var(--text-sub-strong-tracking)">Build the right <span class="hl" style="background: var(--color-accent)">operating model</span></h3><div style="display: flex; flex-direction: column; gap: var(--space-3); color: var(--color-grey-700)"><p class="t-body">Some clients need a strategic project. Some need ongoing management. Some already have internal teams and need additional creative or specialist support.</p><p class="t-body">The engagement should reflect the actual gap rather than forcing every client into the same package.</p></div></li><li class="card" style="background: var(--color-paper); padding: var(--space-8); gap: var(--space-6)"><span class="t-display" style="color: var(--color-ink); font-variant-numeric: tabular-nums">03</span><h3 class="t-sub" style="margin-top: var(--space-8); font-weight: var(--weight-bold); letter-spacing: var(--text-sub-strong-tracking)">Keep the disciplines <span class="hl" style="background: var(--color-accent)">connected</span></h3><div style="display: flex; flex-direction: column; gap: var(--space-3); color: var(--color-grey-700)"><p class="t-body">Strategy is stronger when the people responsible for execution understand it. Creative improves when production understands how and where the work will be used. Management improves when content and performance are not treated as separate conversations.</p><p class="t-body">We keep those connections close enough that the work does not lose its logic between handovers.</p></div></li><li class="card" style="background: var(--color-paper); padding: var(--space-8); gap: var(--space-6)"><span class="t-display" style="color: var(--color-ink); font-variant-numeric: tabular-nums">04</span><h3 class="t-sub" style="margin-top: var(--space-8); font-weight: var(--weight-bold); letter-spacing: var(--text-sub-strong-tracking)">Learn and <span class="hl" style="background: var(--color-accent)">adjust</span></h3><div style="display: flex; flex-direction: column; gap: var(--space-3); color: var(--color-grey-700)"><p class="t-body">Social changes quickly, but that does not mean chasing every trend or rebuilding the strategy every month.</p><p class="t-body">We use what the channels, audience and work are telling us to make better subsequent decisions while keeping the larger brand and commercial job in view.</p></div></li></ol>
+    <div class="sw-wrap">
+    <ol style="list-style: none; margin: 0; padding: 0" class="how-grid sw-track" tabindex="0" aria-label="Scroll the cards sideways"><li class="card" style="background: var(--color-paper); padding: var(--space-8); gap: var(--space-6)"><span class="t-display" style="color: var(--color-ink); font-variant-numeric: tabular-nums">01</span><h3 class="t-sub" style="margin-top: var(--space-8); font-weight: var(--weight-bold); letter-spacing: var(--text-sub-strong-tracking)">Start with the <span class="hl" style="background: var(--color-accent)">business problem</span></h3><div style="display: flex; flex-direction: column; gap: var(--space-3); color: var(--color-grey-700)"><p class="t-body">We do not begin by deciding how many posts, videos or platforms a brand should have.</p><p class="t-body">We start with what needs to change and where social can make a useful contribution.</p></div></li><li class="card" style="background: var(--color-paper); padding: var(--space-8); gap: var(--space-6)"><span class="t-display" style="color: var(--color-ink); font-variant-numeric: tabular-nums">02</span><h3 class="t-sub" style="margin-top: var(--space-8); font-weight: var(--weight-bold); letter-spacing: var(--text-sub-strong-tracking)">Build the right <span class="hl" style="background: var(--color-accent)">operating model</span></h3><div style="display: flex; flex-direction: column; gap: var(--space-3); color: var(--color-grey-700)"><p class="t-body">Some clients need a strategic project. Some need ongoing management. Some already have internal teams and need additional creative or specialist support.</p><p class="t-body">The engagement should reflect the actual gap rather than forcing every client into the same package.</p></div></li><li class="card" style="background: var(--color-paper); padding: var(--space-8); gap: var(--space-6)"><span class="t-display" style="color: var(--color-ink); font-variant-numeric: tabular-nums">03</span><h3 class="t-sub" style="margin-top: var(--space-8); font-weight: var(--weight-bold); letter-spacing: var(--text-sub-strong-tracking)">Keep the disciplines <span class="hl" style="background: var(--color-accent)">connected</span></h3><div style="display: flex; flex-direction: column; gap: var(--space-3); color: var(--color-grey-700)"><p class="t-body">Strategy is stronger when the people responsible for execution understand it. Creative improves when production understands how and where the work will be used. Management improves when content and performance are not treated as separate conversations.</p><p class="t-body">We keep those connections close enough that the work does not lose its logic between handovers.</p></div></li><li class="card" style="background: var(--color-paper); padding: var(--space-8); gap: var(--space-6)"><span class="t-display" style="color: var(--color-ink); font-variant-numeric: tabular-nums">04</span><h3 class="t-sub" style="margin-top: var(--space-8); font-weight: var(--weight-bold); letter-spacing: var(--text-sub-strong-tracking)">Learn and <span class="hl" style="background: var(--color-accent)">adjust</span></h3><div style="display: flex; flex-direction: column; gap: var(--space-3); color: var(--color-grey-700)"><p class="t-body">Social changes quickly, but that does not mean chasing every trend or rebuilding the strategy every month.</p><p class="t-body">We use what the channels, audience and work are telling us to make better subsequent decisions while keeping the larger brand and commercial job in view.</p></div></li></ol>
+    <div class="sw-ctrl"><div class="sw-bar" aria-hidden="true"><span></span></div><div class="sw-btns"><button type="button" class="sw-btn sw-prev" aria-label="Previous cards"><svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"></path></svg></button><button type="button" class="sw-btn sw-next" aria-label="Next cards"><svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button></div></div>
+    </div>
   </div>
 </section>
 
@@ -590,6 +616,67 @@ html,body{margin:0}
         win.clearTimeout(timer);
       });
     }
+
+    // Numbered-card slider: arrows, progress bar and mouse drag on a scroll-snap track.
+    Array.prototype.slice.call(root.querySelectorAll('.sw-track')).forEach(function (track) {
+      var box = track.parentElement;
+      var prev = box.querySelector('.sw-prev'), next = box.querySelector('.sw-next');
+      var bar = box.querySelector('.sw-bar'), thumb = bar && bar.firstElementChild;
+      var step = function () {
+        var li = track.firstElementChild;
+        var gap = parseFloat(win.getComputedStyle(track).columnGap) || 0;
+        return li ? li.getBoundingClientRect().width + gap : track.clientWidth;
+      };
+      var update = function () {
+        var max = track.scrollWidth - track.clientWidth;
+        if (prev) prev.disabled = track.scrollLeft <= 2;
+        if (next) next.disabled = track.scrollLeft >= max - 2;
+        if (bar && thumb) {
+          var bw = bar.clientWidth, tw = Math.max(32, bw * track.clientWidth / track.scrollWidth);
+          thumb.style.width = tw + 'px';
+          thumb.style.transform = 'translateX(' + (max > 0 ? (bw - tw) * track.scrollLeft / max : 0) + 'px)';
+        }
+      };
+      var go = function (d) { track.scrollBy({ left: d * step(), behavior: reduce ? 'auto' : 'smooth' }); };
+      var onPrev = function () { go(-1); }, onNext = function () { go(1); };
+      var down = false, moved = false, sx = 0, sl = 0;
+      var pd = function (e) { if (e.pointerType !== 'mouse' || e.button !== 0) return; down = true; moved = false; sx = e.clientX; sl = track.scrollLeft; };
+      var pm = function (e) {
+        if (!down) return;
+        var dx = e.clientX - sx;
+        if (!moved && Math.abs(dx) > 4) { moved = true; track.classList.add('drag'); }
+        if (moved) { e.preventDefault(); track.scrollLeft = sl - dx; }
+      };
+      var pu = function () {
+        if (!down) return;
+        down = false;
+        if (moved) {
+          track.classList.remove('drag');
+          var s = step();
+          track.scrollTo({ left: Math.round(track.scrollLeft / s) * s, behavior: reduce ? 'auto' : 'smooth' });
+        }
+      };
+      var onClick = function (e) { if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; } };
+      if (prev) prev.addEventListener('click', onPrev);
+      if (next) next.addEventListener('click', onNext);
+      track.addEventListener('scroll', update, { passive: true });
+      track.addEventListener('pointerdown', pd);
+      track.addEventListener('click', onClick, true);
+      win.addEventListener('pointermove', pm);
+      win.addEventListener('pointerup', pu);
+      win.addEventListener('resize', update);
+      update();
+      offs.push(function () {
+        if (prev) prev.removeEventListener('click', onPrev);
+        if (next) next.removeEventListener('click', onNext);
+        track.removeEventListener('scroll', update);
+        track.removeEventListener('pointerdown', pd);
+        track.removeEventListener('click', onClick, true);
+        win.removeEventListener('pointermove', pm);
+        win.removeEventListener('pointerup', pu);
+        win.removeEventListener('resize', update);
+      });
+    });
 
     return function () { offs.forEach(function (f) { f(); }); };
   }
